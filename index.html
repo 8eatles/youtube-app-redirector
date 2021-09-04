@@ -1,0 +1,16 @@
+<html>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.5/mobile-detect.min.js"></script>
+  <script>
+    let params = (new URL(document.location)).searchParams;
+    const md = new MobileDetect(window.navigator.userAgent);
+    const key = params.get("key");
+    if (!key) {
+      document.write('Cannot find key from query string.');
+    } else if (md.mobile()) {
+      window.location.href=`vnd.youtube://${key}`;
+    } else {
+      window.location.href=`https://www.youtube.com/watch?v=${key}`;
+    }
+  </script>
+</html>
+
